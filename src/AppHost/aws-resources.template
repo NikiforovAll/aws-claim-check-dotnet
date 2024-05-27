@@ -1,0 +1,84 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {},
+    "Resources": {
+        "DocumentQueue": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {}
+        },
+        "DocumentTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "Subscription": [
+                    {
+                        "Protocol": "sqs",
+                        "Endpoint": {
+                            "Fn::GetAtt": [
+                                "DocumentQueue",
+                                "Arn"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "DocumentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "claim-check-aws-document-bucket-001"
+            }
+        },
+        "DocumentQueuePolicy": {
+            "Type": "AWS::SQS::QueuePolicy",
+            "Properties": {
+                "Queues": [
+                    {
+                        "Ref": "DocumentQueue"
+                    }
+                ],
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": "sqs:SendMessage",
+                            "Principal": {
+                                "Service": "sns.amazonaws.com"
+                            },
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DocumentQueue",
+                                    "Arn"
+                                ]
+                            },
+                            "Condition": {
+                                "ArnEquals": {
+                                    "aws:SourceArn": {
+                                        "Ref": "DocumentTopic"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "DocumentQueueUrl": {
+            "Value": {
+                "Ref": "DocumentQueue"
+            }
+        },
+        "DocumentTopicArn": {
+            "Value": {
+                "Ref": "DocumentTopic"
+            }
+        },
+        "DocumentBucketName": {
+            "Value": {
+                "Ref": "DocumentBucket"
+            }
+        }
+    }
+}

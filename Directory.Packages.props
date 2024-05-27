@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.AWS" Version="8.0.1-preview.8.24267.1" />
+    <PackageVersion Include="AWS.Messaging" Version="0.9.1" />
+    <PackageVersion Include="AWSSDK.Comprehend" Version="3.7.300.95" />
+    <PackageVersion Include="AWSSDK.S3" Version="3.7.308.4" />
+    <PackageVersion Include="AWSSDK.Textract" Version="3.7.300.95" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    <PackageVersion Include="AWS.Messaging.Telemetry.OpenTelemetry" Version="0.9.1" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.5.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.0.1" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AWS" Version="1.1.0-beta.4" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.8.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+</Project>
