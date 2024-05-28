@@ -1,4 +1,4 @@
-# Claim Check Pattern via AWS.Messaging in .NET
+# Claim-Check Pattern via AWS.Messaging in .NET
 
 This repository demonstrates how to use AWS.Messaging based to implement a claim-check pattern.
 
@@ -21,29 +21,17 @@ In this case we are parsing and analyzing key phrases of pdf documents.
    1. Amazon Textract fetches the text from PDF
    2. Amazon Comprehend performs key phrases extraction
 
-```mermaid
-graph LR
-    A[API] --> B[S3]
-    B --> C[SNS]
-    C --> D[Producer.SQS]
-    D --> S[SQS]
-    S --> DD[Consumer.SQS]
-    DD --> E[Amazon Textract]
-    E --> F[Amazon Comprehend]
-    F --> G[S3]
-```
+![alt](./assets/sd-aws.png)
 
 ![alt](./assets/trace-claim-check.png)
 
 ## Reference
 
-1. <https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html>
-2. <https://learn.microsoft.com/en-us/azure/architecture/patterns/claim-check>
-3. <https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/msg-proc-fw.html>
-4. <https://docs.aws.amazon.com/prescriptive-guidance/latest/automated-pdf-analysis-solution/welcome.html>
-5. <https://docs.aws.amazon.com/textract/latest/dg/what-is.html>
-
-## TODO:
-
-1. Plant UML arch diagrams vs drawio diagrams?
-2. Complementary blog post
+1. <https://github.com/awslabs/aws-dotnet-messaging>
+2. <https://aws.amazon.com/blogs/developer/introducing-the-aws-message-processing-framework-for-net-preview/>
+3. <https://learn.microsoft.com/en-us/azure/architecture/patterns/claim-check>
+4. <https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/msg-proc-fw.html>
+5. <https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html>
+6. <https://docs.aws.amazon.com/prescriptive-guidance/latest/automated-pdf-analysis-solution/welcome.html>
+7. <https://github.com/plantuml/plantuml-server>
+8. <https://github.com/awslabs/aws-icons-for-plantuml>

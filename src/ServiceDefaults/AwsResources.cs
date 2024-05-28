@@ -13,5 +13,4 @@ public class AwsResources
 
     [Required]
     public string? DocumentBucketName { get; set; }
-
 }

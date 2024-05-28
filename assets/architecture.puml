@@ -1,0 +1,48 @@
+@startuml Sequence Diagram - File Submission
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/Storage/SimpleStorageService.puml
+!include AWSPuml/ApplicationIntegration/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/General/User.puml
+!include AWSPuml/MachineLearning/Textract.puml
+!include AWSPuml/MachineLearning/Comprehend.puml
+
+hide footbox
+skinparam style strictuml
+skinparam MaxMessageSize 200
+
+participant "$UserIMG()\nUser" as user
+box AWS Cloud
+participant "$APIGatewayIMG()\nGateway" as gateway << API Gateway >>
+participant "$EC2IMG()\nAPI" as api << REST API >>
+participant "$SimpleStorageServiceIMG()\nS3" as s3
+participant "$SimpleNotificationServiceIMG()\nSNS" as sns
+participant "$SimpleQueueServiceIMG()\nSQS" as sqs
+participant "$EC2IMG()\nProcessor" as processor << Background Service >>
+participant "$TextractIMG()\nTextract" as textract
+participant "$ComprehendIMG()\nComprehend" as comprehend
+endbox
+
+user -> gateway++ : Submit file
+gateway -> api++ : Submit file
+api -> s3++ : Store file
+return File stored
+api -> sns++ : Send claim-check message
+sns -> sqs++ : Put message in queue
+return Message queued
+return Message published
+return Created (201)
+return Response
+sqs -> processor++ : Consume claim-check message
+processor -> textract++ : Parse pdf document
+textract -> s3 : Load document
+return Parsed content
+processor -> comprehend++ : Extract Key Phrases
+return Key Phrases
+processor -> s3++ : Store Results
+return File stored
+return ACK message
+
+@enduml
