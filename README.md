@@ -28,10 +28,11 @@ In this case we are parsing and analyzing key phrases of pdf documents.
 ## Reference
 
 1. <https://github.com/awslabs/aws-dotnet-messaging>
-2. <https://aws.amazon.com/blogs/developer/introducing-the-aws-message-processing-framework-for-net-preview/>
-3. <https://learn.microsoft.com/en-us/azure/architecture/patterns/claim-check>
-4. <https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/msg-proc-fw.html>
-5. <https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html>
-6. <https://docs.aws.amazon.com/prescriptive-guidance/latest/automated-pdf-analysis-solution/welcome.html>
-7. <https://github.com/plantuml/plantuml-server>
-8. <https://github.com/awslabs/aws-icons-for-plantuml>
+2. <https://github.com/dotnet/aspire/tree/main/src/Aspire.Hosting.AWS>
+3. <https://aws.amazon.com/blogs/developer/introducing-the-aws-message-processing-framework-for-net-preview/>
+4. <https://learn.microsoft.com/en-us/azure/architecture/patterns/claim-check>
+5. <https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/msg-proc-fw.html>
+6. <https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html>
+7. <https://docs.aws.amazon.com/prescriptive-guidance/latest/automated-pdf-analysis-solution/welcome.html>
+8. <https://github.com/plantuml/plantuml-server>
+9. <https://github.com/awslabs/aws-icons-for-plantuml>
